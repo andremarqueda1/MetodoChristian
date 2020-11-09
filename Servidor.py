@@ -6,19 +6,19 @@ Implementación a través de ZeroMQ
 """
 from datetime import datetime
 import zmq
-import os
-def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
+import random
 
 context=zmq.Context() 
 socket=context.socket(zmq.REP)
-string=socket.bind("tcp://*:5555")
-tiempoS=datetime.now()
+string=socket.bind("tcp://*:4595")
 
-print(type(tiempoS))
-"""
+
 while True:
-    Pmessage=socket.recv()
-    print("Received request:" + Pmessage.decode('utf-8'))
-    socket.send()
-"""
+    solicitudP=socket.recv()
+    print (solicitudP.decode('utf-8'))
+    print("Solicitud de tiempo recibida satisfactoriamente")
+    
+    tiempoS=datetime.now().strftime("%H:%M:%S")
+    socket.send(tiempoS.encode('utf-8'))
+    
+
