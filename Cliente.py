@@ -40,9 +40,14 @@ tiempoServidor = socket.recv().decode('utf-8') #Recibiendo tiempo
 Una vez recibido la respuesta de S, podemos calcular el Round Trip Time
 """
 
-RTT=time.time()-RTT#fin del cronómetro calculando el Round Trip Time
+RTT=time.time()-RTT #fin del cronómetro calculando el Round Trip Time
 print("El tiempo que entre envío de solicitud y recepción de la hora (RTT) fue de:\n\tRTT: ",RTT)
 print("Recibiendo tiempo de servidor ",tiempoServidor)
+
+
+"""
+Convirtiendo el mensaje decodificado a su respectivo formato datetime para su manipulación
+"""
 tiempoS=datetime.datetime.strptime(tiempoServidor, "%H:%M:%S")
 
 """
