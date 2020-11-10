@@ -3,6 +3,6 @@ Implementación del Método de Christian a través utilizando Python en conjunto
 
 ¿Cómo utilizar?
 Correr primero Servidor en una consola (CMD)
->python Servidor.py
+\>python Servidor.py
 Abrir una segunda consola y ejecutar cliente 
->python Cliente.py
+\>python Cliente.py
