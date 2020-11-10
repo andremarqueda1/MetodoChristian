@@ -19,7 +19,7 @@ Iniciamos una segunda consola y ejecutamos Cliente.py
  - Python 3.x or newer
 
 ***How to use it?*** <br>
-Run Servidor.py in the shell
+Run Servidor.py in a shell
 > Python Servidor.py
 
 In a second shell run Cliente.py
