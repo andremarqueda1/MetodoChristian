@@ -1,8 +1,26 @@
-# MetodoChristian
-Implementación del Método de Christian a través utilizando Python en conjunto con la biblioteca ZeroMq
+# Método de Chrisitan (Christian's Algorithm)
+## SPANISH
+***Dependencias***
 
-¿Cómo utilizar?
-Correr primero Servidor en una consola (CMD)
-\>python Servidor.py
-Abrir una segunda consola y ejecutar cliente 
-\>python Cliente.py
+ - ZeroMQ para Python
+ - Python 3.x o mejor
+
+***¿Cómo utilizarlo?*** <br>
+Iniciamos por ejecutar en una consola Servidor.py
+> Python Servidor.py
+
+Iniciamos una segunda consola y ejecutamos Cliente.py
+>Python Cliente.py
+
+## English 
+***Dependencies***
+
+ - ZeroMQ for Python
+ - Python 3.x or newer
+
+***How to use it?*** <br>
+Run Servidor.py in the shell
+> Python Servidor.py
+
+In a second shell run Cliente.py
+>Python Cliente.py
