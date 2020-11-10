@@ -7,6 +7,7 @@ Implementación a través de ZeroMQ
 
 import zmq
 import datetime
+import time
 import random
 context = zmq.Context()
 
@@ -18,7 +19,7 @@ print("Solicitando tiempo a S")
 
 msg = "solicitud de tiempo"
 socket.send(msg.encode('utf-8'))
-tiempoEnvio=datetime.datetime.now() #hora de solicitud
+RTT=time.time() #inicio del cronómetro
 tiempoP=datetime.datetime.now()#Hora de P
 
 """
@@ -33,12 +34,23 @@ print("La hora actual en P previo a la sincronización es:\n",tiempoP.strftime("
 Recibiendo respuesta del servidor S
 """
 
-message = socket.recv() #Recibiendo tiempo
+tiempoServidor = socket.recv().decode('utf-8') #Recibiendo tiempo
+
 """
 Una vez recibido la respuesta de S, podemos calcular el Round Trip Time
 """
-tiempoRecibo=datetime.datetime.now() #Hora de recibido
-roundTripTime=tiempoRecibo-tiempoEnvio
-print("El tiempo que se tardó en recibir el mensaje (RTT) fue de:\n\tRTT: ",roundTripTime)
-print("Recibiendo tiempo y realizando ajuste ",message.decode('utf-8'))
+
+RTT=time.time()-RTT#fin del cronómetro calculando el Round Trip Time
+print("El tiempo que entre envío de solicitud y recepción de la hora (RTT) fue de:\n\tRTT: ",RTT)
+print("Recibiendo tiempo de servidor ",tiempoServidor)
+tiempoS=datetime.datetime.strptime(tiempoServidor, "%H:%M:%S")
+
+"""
+Calculando el nuevo tiempo del proceso P
+"""
+tiempoP=tiempoS-(datetime.timedelta(seconds=(int(RTT/2))))
+print ("Nueva hora del proceso P\n\t", tiempoP.strftime("%H:%M:%S"))
+
+
+
 

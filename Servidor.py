@@ -14,19 +14,20 @@ context=zmq.Context()
 socket=context.socket(zmq.REP)
 string=socket.bind("tcp://*:4595")
 
-
-print ("En espera de solicitud de tiempo....")
-solicitudP=socket.recv()
-print (solicitudP.decode('utf-8'))
-print("Solicitud de tiempo recibida satisfactoriamente")    
-tiempoS=datetime.datetime.now().strftime("%H:%M:%S")
-print("Enviando respuesta a P\n\t Hora del servidor:\t",tiempoS)
-print("Simulando latencia de envío")
-for x in range(3):
-    print("...")
-    time.sleep(random.randint(0,3)) #Simulando latencia de respuesta    
-
-socket.send(tiempoS.encode('utf-8'))
-print("Tiempo enviado satisfactoriamente")
+while True:
+    print ("En espera de solicitud de tiempo....")
+    solicitudP=socket.recv()
+    print (solicitudP.decode('utf-8'))
+    print("Solicitud de tiempo recibida satisfactoriamente")    
+    tiempoS=datetime.datetime.now().strftime("%H:%M:%S")
+    print("Enviando respuesta a P\n\t Hora del servidor:\t",tiempoS)
+    print("Simulando latencia de envío")
+    for x in range(5):
+        print(".",end="..")
+        time.sleep(random.randint(0,1)) #Simulando latencia de respuesta    
+        print(".",end=".")
+    
+    socket.send(tiempoS.encode('utf-8'))
+    print("Tiempo enviado satisfactoriamente")
     
 
