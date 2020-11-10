@@ -4,10 +4,11 @@ Python 3.7.4 (default, Aug  9 2019, 18:34:13) [MSC v.1915 64 bit (AMD64)]
 Método de Christian para la sincronización de relojes
 Implementación a través de ZeroMQ
 """
+
 import zmq
 import datetime
-
-
+import random
+import time
 
 context=zmq.Context() 
 socket=context.socket(zmq.REP)
@@ -20,6 +21,11 @@ print (solicitudP.decode('utf-8'))
 print("Solicitud de tiempo recibida satisfactoriamente")    
 tiempoS=datetime.datetime.now().strftime("%H:%M:%S")
 print("Enviando respuesta a P\n\t Hora del servidor:\t",tiempoS)
+print("Simulando latencia de envío")
+for x in range(3):
+    print("...")
+    time.sleep(random.randint(0,3)) #Simulando latencia de respuesta    
+
 socket.send(tiempoS.encode('utf-8'))
 print("Tiempo enviado satisfactoriamente")
     
