@@ -1,5 +1,5 @@
 # Método de Chrisitan (Christian's Algorithm)
-## SPANISH
+## Spanish
 ***Dependencias***
 
  - ZeroMQ para Python
